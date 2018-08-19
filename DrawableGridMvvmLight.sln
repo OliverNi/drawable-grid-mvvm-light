@@ -3,11 +3,37 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business Logic", "Business Logic", "{38E38548-D266-4F5B-B976-AD18A17B869A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF App", "WPF App", "{15BE6B08-C466-48BC-B7B0-4CFCED88643D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawableGridApp", "DrawableGridApp\DrawableGridApp.csproj", "{AE4A719D-752F-4DCF-820D-9B2400AEF7C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawableGridLogic", "DrawableLineLogic\DrawableGridLogic.csproj", "{E5AD5D0F-7060-4DDF-84A4-653A305817A6}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE4A719D-752F-4DCF-820D-9B2400AEF7C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE4A719D-752F-4DCF-820D-9B2400AEF7C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE4A719D-752F-4DCF-820D-9B2400AEF7C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE4A719D-752F-4DCF-820D-9B2400AEF7C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5AD5D0F-7060-4DDF-84A4-653A305817A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5AD5D0F-7060-4DDF-84A4-653A305817A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5AD5D0F-7060-4DDF-84A4-653A305817A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5AD5D0F-7060-4DDF-84A4-653A305817A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AE4A719D-752F-4DCF-820D-9B2400AEF7C8} = {15BE6B08-C466-48BC-B7B0-4CFCED88643D}
+		{E5AD5D0F-7060-4DDF-84A4-653A305817A6} = {38E38548-D266-4F5B-B976-AD18A17B869A}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BC381F02-6AC1-4D03-8AE3-AD73D67B9203}
+		SolutionGuid = {69EA899C-34F2-4222-93B9-636B6E79C8BC}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,49 @@
+﻿<Window xmlns:View="clr-namespace:DrawableGridApp.View"  x:Class="DrawableGridApp.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:DrawableGridApp"
+        mc:Ignorable="d"
+        Title="{Binding Title}" Height="450" Width="800"
+        DataContext="{Binding Main, Source={StaticResource Locator}}">
+    <Grid>
+        <DockPanel
+            HorizontalAlignment="Stretch" 
+            VerticalAlignment="Stretch" 
+            Height="Auto" 
+            MinWidth="400"
+            Margin="10">
+            <StackPanel DockPanel.Dock="Top" Height="48" HorizontalAlignment="Left" Orientation="Horizontal">
+                <Button Name="DrawButton">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <cmd:EventToCommand Command="{Binding SwitchModeCommand}" PassEventArgsToCommand="True"
+                                    EventArgsConverter="{StaticResource ModeEventArgsConverter}"
+                                    EventArgsConverterParameter="Draw"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                    <WrapPanel>
+                        <Image Width="48" Source="/Resources/DrawButton.png" Stretch="None"/>
+                    </WrapPanel>
+                </Button>
+                <Button Name="EditButton">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <cmd:EventToCommand Command="{Binding SwitchModeCommand}" PassEventArgsToCommand="True"
+                                    EventArgsConverter="{StaticResource ModeEventArgsConverter}"
+                                    EventArgsConverterParameter="Edit"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <WrapPanel>
+                        <Image Width="48" Source="/Resources/EditButton.png" Stretch="None"/>
+                    </WrapPanel>
+                </Button>
+            </StackPanel>
+            <View:DrawableGridUserControl DataContext="{Binding DrawableGridViewModel, Mode=TwoWay}"/>
+        </DockPanel>
+    </Grid>
+</Window>

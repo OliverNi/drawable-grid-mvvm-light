@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="DrawableGridApp.View.DrawableGridUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DrawableGridApp.View"
+             xmlns:vm="clr-namespace:DrawableGridLogic.ViewModel;assembly=DrawableGridLogic"
+             xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Name="DrawableGrid">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseDown">
+                <cmd:EventToCommand Command="{Binding MouseDownCommand}" PassEventArgsToCommand="True"
+                                    IsEnabled="{Binding ActiveMode, Converter={StaticResource DrawModeIsActiveConverter}, 
+                                        ConverterParameter=ActiveMode}"
+                                    EventArgsConverter="{StaticResource MouseButtonEventArgsConverter}"
+                                    EventArgsConverterParameter="{Binding ElementName=DrawableGrid}"/>
+            </i:EventTrigger>
+            <i:EventTrigger EventName="MouseUp">
+                <cmd:EventToCommand Command="{Binding MouseUpCommand}" PassEventArgsToCommand="True"
+                                    IsEnabled="{Binding ActiveMode, Converter={StaticResource DrawModeIsActiveConverter}, 
+                                        ConverterParameter=ActiveMode}"
+                                    EventArgsConverter="{StaticResource MouseButtonEventArgsConverter}"
+                                    EventArgsConverterParameter="{Binding ElementName=DrawableGrid}"/>
+            </i:EventTrigger>
+            <i:EventTrigger EventName="MouseMove">
+                <cmd:EventToCommand Command="{Binding MouseMoveCommand}" PassEventArgsToCommand="True"
+                                    IsEnabled="{Binding ActiveMode, Converter={StaticResource DrawModeIsActiveConverter}, 
+                                        ConverterParameter=ActiveMode}"
+                                    EventArgsConverter="{StaticResource MouseButtonEventArgsConverter}"
+                                    EventArgsConverterParameter="{Binding ElementName=DrawableGrid}"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        
+        <Border>
+            <Border.Background>
+            <VisualBrush TileMode="Tile"
+                            Viewport="0,0,20,20" ViewportUnits="Absolute" 
+                            Viewbox="0,0,20,20" ViewboxUnits="Absolute"> <!-- TODO Bind viewbox/port to Grid -->
+                <VisualBrush.Visual>
+                        <Rectangle Stroke="Darkgray" StrokeThickness="1" Height="{Binding Grid.Height}" Width="{Binding Grid.Width}"
+                                StrokeDashArray="2 1"/>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Border.Background>
+        </Border>
+        
+        <ItemsControl ItemsSource="{Binding Lines}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type vm:DrawableLineViewModel}">
+                    <local:DrawableLineUserControl DataContext="{Binding}"></local:DrawableLineUserControl>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <ItemsControl ItemsSource="{Binding PreviewLine}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type vm:DrawableLineViewModel}">
+                    <local:DrawableLineUserControl DataContext="{Binding}"></local:DrawableLineUserControl>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <local:DrawableLineUserControl DataContext="{Binding PreviewLine, Mode=TwoWay}"/>
+    </Grid>
+</UserControl>

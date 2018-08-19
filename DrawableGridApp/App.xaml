@@ -1,0 +1,19 @@
+<Application x:Class="DrawableGridApp.App" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:local="clr-namespace:DrawableGridApp" 
+             StartupUri="View/MainWindow.xaml" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             d1p1:Ignorable="d" 
+             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:DrawableGridLogic.ViewModel;assembly=DrawableGridLogic"
+             xmlns:cv="clr-namespace:DrawableGridLogic.Converters;assembly=DrawableGridLogic">
+  <Application.Resources>
+    <ResourceDictionary>
+            <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True"/>
+            <cv:MouseButtonEventArgsConverter x:Key="MouseButtonEventArgsConverter"/>
+            <cv:DrawModeIsActiveConverter x:Key="DrawModeIsActiveConverter"/>
+            <cv:ModeEventArgsConverter x:Key="ModeEventArgsConverter"/>
+        </ResourceDictionary>
+  </Application.Resources>
+</Application>
